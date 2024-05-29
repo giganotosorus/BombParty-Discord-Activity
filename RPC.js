@@ -69,5 +69,3 @@ rpc.on('ready', () => { // Attend que le client RPC soit prêt
 });
 
 rpc.login({ clientId }).catch(console.error); // Connexion au client RPC
-
-
