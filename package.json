@@ -1,0 +1,10 @@
+{
+    "name": "bombparty-rpc",
+    "version": "1.0.0",
+    "description": "Rpc discord pour BombParty",
+    "dependencies": {
+        "ws": "^7.5.9",
+        "discord-rpc": "^4.0.1"
+    }
+}
+
