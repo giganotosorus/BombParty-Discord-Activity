@@ -44,8 +44,6 @@ class Socket {
         try {
             this.socket.send(JSON.stringify({ active: active, code: url, inGame: inGame, timeStamps: timeStamps }));
         } catch (e) {
-            // console.log("Message non envoyé", e);
-            // console.log(active, url, inGame, timeStamps);
             if (!this.socket) {
                 this.reconnect(); //Tentative de reconnexion si le message n'a pas été envoyé
             }
