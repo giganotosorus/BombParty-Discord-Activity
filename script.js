@@ -18,6 +18,7 @@ class Socket {
     constructor() {
         this.socket = new WebSocket("ws://localhost:8005"); // Connexion au serveur local
         this.socket.onerror = () => {};
+        this.timeToReconnect = 1000;
     }
 
     reconnect() {
@@ -25,7 +26,8 @@ class Socket {
         this.socket.onclose = () => { // Attend que la connexion soit fermée
             setTimeout(() => {
                 this.open(); // Attend une seconde avant de se reconnecter
-            }, 1000);
+                this.timeToReconnect = this.timeToReconnect * 2; // Double le temps de reconnexion
+            }, this.timeToReconnect);
         }
     }
 

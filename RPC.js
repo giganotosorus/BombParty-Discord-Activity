@@ -28,7 +28,7 @@ function setActivity(rpc, code, inGame, startTimestamp) { // Fonction pour mettr
         smallImageKey: inGame ? 'jklm' : 'bombe', // Image affichée en petit
         smallImageText: inGame ? 'JKLM.fun' : 'Bomb Party', // Texte affiché en petit
         instance: false, // Instance unique
-        buttons: [{ label: "Rejoindre", url: `https://jklm.fun/${code}` }, { label: "Discord", url: "https://youtu.be/dQw4w9WgXcQ" }] // Boutons
+        buttons: [{ label: "Rejoindre", url: `https://jklm.fun/${code}` }, { label: "Discord", url: "https://youtu.be/dQw4w9WgXcQ" }] // Boutons (Discord à supprimer les boutons je les laisse au cas où ils les remettent)
     });
 }
 
@@ -40,6 +40,7 @@ rpc.on('ready', () => { // Attend que le client RPC soit prêt
         ws.on('message', message => { // Attend un message du client
             const data = JSON.parse(message); // Parse le message en JSON
             if (data.active) { // Vérifie si l'activité se lance ou se ferme
+                console.log(data.code)
                 if (data.code) { // Récupère l'url d'envoie de la requête
                     if (data.code === "games") { // Vérifie si l'url est bien le code de la partie ou si elle vient du jeu
                         data.code = previousCode; // Récupère le code de la partie précédente
@@ -69,3 +70,4 @@ rpc.on('ready', () => { // Attend que le client RPC soit prêt
 });
 
 rpc.login({ clientId }).catch(console.error); // Connexion au client RPC
+
